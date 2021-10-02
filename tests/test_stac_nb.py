@@ -2,9 +2,6 @@
 
 """Tests for `stac_nb` package."""
 
-import pytest
-
-
 from stac_nb import STAC_Query_UI
 
 
@@ -33,7 +30,7 @@ def test_display_ui(requests_mock, collection_response, search_response):
     assert True
 
 
-def test_stac_query_ui(requests_mock, collection_response, search_response):
+def test_button_click(requests_mock, collection_response, search_response):
     """Test UI button click."""
 
     stac_api = "https://api/endpoint"

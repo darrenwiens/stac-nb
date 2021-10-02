@@ -68,7 +68,7 @@ class STAC_Query_UI(widgets.VBox):
             # test fails to set_title for some reason
             try:
                 tab.set_title(i, str(titles[i]))
-            except:
+            except:  # noqa: E722
                 pass
 
         self.children = [tab, self.query_btn_w, self.response_text]
