@@ -8,6 +8,8 @@ STAC in Jupyter Notebooks
 
 # Usage
 
+Start Jupyter Lab (`jupyter lab`), create new notebook, then:
+
 ```
 from stac_nb import STAC_Query_UI
 
