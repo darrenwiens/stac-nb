@@ -40,7 +40,7 @@ setup(
     packages=find_packages(include=["stac_nb", "stac_nb.*"]),
     test_suite="tests",
     tests_require=test_requirements,
-    url="https://github.com/darrenwiens/stac_nb",
+    url="https://github.com/darrenwiens/stac-nb",
     version="0.1.0",
     zip_safe=False,
 )
