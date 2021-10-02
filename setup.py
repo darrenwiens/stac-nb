@@ -10,7 +10,7 @@ with open("README.md") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["ipykernel", "ipywidgets", "jupyterlab", "requests"]
+requirements = ["ipykernel", "ipython", "ipywidgets", "jupyterlab", "requests"]
 
 test_requirements = [
     "pytest>=3",
