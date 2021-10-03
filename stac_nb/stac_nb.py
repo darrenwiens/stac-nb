@@ -58,6 +58,13 @@ class STAC_Query_UI(widgets.VBox):
 
         self.end_date_w = widgets.DatePicker(description="End Date", disabled=False)
 
+        self.show_query_w = widgets.Checkbox(
+            value=False,
+            description="Print query",
+            disabled=False,
+            indent=False,
+        )
+
         self.query_btn_w = widgets.Button(
             description="Run Query",
             disabled=False,
@@ -85,7 +92,7 @@ class STAC_Query_UI(widgets.VBox):
             except:  # noqa: E722
                 pass
 
-        self.children = [tab, self.query_btn_w, self.response_text]
+        self.children = [tab, self.show_query_w, self.query_btn_w, self.response_text]
 
     def display(self):
         iDisplay(self)
@@ -123,6 +130,8 @@ class STAC_Query_UI(widgets.VBox):
         self.query_results = query_response.json()
 
         with self.response_text:
+            if self.show_query_w.value:
+                print(f"QUERY: {vars(query_response.request)}")
             matches = query_response.json()
             print(f"MATCHES: {len(matches['features'])}")
 
