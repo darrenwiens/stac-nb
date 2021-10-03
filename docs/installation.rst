@@ -12,7 +12,7 @@ To install stac-nb, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install stac_nb
+    $ pip install stac-nb
 
 This is the preferred method to install stac-nb, as it will always install the most recent stable release.
 
@@ -38,7 +38,7 @@ Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/darrenwiens/stac_nb/tarball/master
+    $ curl -OJL https://github.com/darrenwiens/stac-nb/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/darrenwiens/stac_nb
-.. _tarball: https://github.com/darrenwiens/stac_nb/tarball/master
+.. _Github repo: https://github.com/darrenwiens/stac-nb
+.. _tarball: https://github.com/darrenwiens/stac-nb/tarball/master

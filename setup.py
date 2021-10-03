@@ -41,6 +41,11 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/darrenwiens/stac-nb",
+    project_urls={
+        "Documentation": "https://stac-nb.readthedocs.io",
+        "Source": "https://github.com/darrenwiens/stac-nb",
+        "Tracker": "https://github.com/darrenwiens/stac-nb/issues",
+    },
     version="0.1.0",
     zip_safe=False,
 )
