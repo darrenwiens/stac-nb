@@ -19,16 +19,30 @@ class STAC_Query_UI(widgets.VBox):
             options=collection_ids,
             description="Collection(s):",
             disabled=False,
+            layout={
+                "width": "95%",
+            },
         )
 
         self.limit_w = widgets.BoundedIntText(
-            value=10, min=0, max=1000, step=1, description="Limit:", disabled=False
+            value=10,
+            min=0,
+            max=1000,
+            step=1,
+            description="Limit:",
+            disabled=False,
+            layout={
+                "width": "95%",
+            },
         )
 
         self.ids_w = widgets.Textarea(
             placeholder="Comma delimited list of IDs",
             description="ID(s):",
             disabled=False,
+            layout={
+                "width": "95%",
+            },
         )
 
         self.bbox_w = widgets.Text(
