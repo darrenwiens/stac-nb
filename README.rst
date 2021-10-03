@@ -5,13 +5,14 @@ STAC in Jupyter Notebooks
 
 Install
 -------------------------
+::
 
     pip install stac-nb
 
 Usage
 -------------------------
 
-To use stac-nb in a project, start Jupyter Lab (`jupyter lab`), create a new notebook, then::
+To use stac-nb in a project, start Jupyter Lab (``jupyter lab``), create a new notebook, then::
 
     from stac_nb import STAC_Query_UI
 
