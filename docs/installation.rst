@@ -32,7 +32,7 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/darrenwiens/stac_nb
+    $ git clone git://github.com/darrenwiens/stac-nb
 
 Or download the `tarball`_:
 
