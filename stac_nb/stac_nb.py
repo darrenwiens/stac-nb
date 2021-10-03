@@ -96,6 +96,10 @@ class STAC_Query_UI(widgets.VBox):
         else:
             payload_dict["bbox"] = bbox
 
+        ids = self.ids_w.value
+        if ids is not None and len(ids) > 0:
+            payload_dict["ids"] = [x.strip(" ") for x in ids.split(",")]
+
         payload = json.dumps(payload_dict)
 
         search_endpoint = os.path.join(self.stac_api, "search")
