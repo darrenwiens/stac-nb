@@ -2,6 +2,6 @@
 
 __author__ = """Darren Wiens"""
 __email__ = "dkwiens@gmail.com"
-__version__ = "__version__ = '0.2.0'"
+__version__ = "0.2.0"
 
 from .stac_nb import STAC_Query_UI  # noqa: F401
