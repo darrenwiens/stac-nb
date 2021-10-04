@@ -2,6 +2,8 @@
 
 """The setup script."""
 
+import io
+import os
 from setuptools import setup, find_packages
 
 with open("README.rst") as readme_file:
@@ -10,7 +12,11 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["ipykernel", "ipython", "ipywidgets", "jupyterlab", "requests"]
+cwd = os.path.abspath(os.path.dirname(__file__))
+with io.open(os.path.join(cwd, "requirements.txt"), encoding="utf-8") as f:
+    all_reqs = f.read().split("\n")
+
+install_requires = [x.strip() for x in all_reqs]
 
 test_requirements = [
     "pytest>=3",
@@ -31,7 +37,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description="stac-nb exposes STAC in Jupyter Notebooks",
-    install_requires=requirements,
+    install_requires=install_requires,
     license="MIT license",
     long_description=readme + "\n\n" + history,
     include_package_data=True,
