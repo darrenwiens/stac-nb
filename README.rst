@@ -3,7 +3,14 @@ stac-nb
 STAC in Jupyter Notebooks
 -------------------------
 
+.. image:: https://readthedocs.org/projects/stac-nb/badge/?version=latest&style=flat
+    :target: https://stac-nb.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+.. image:: https://badge.fury.io/py/stac-nb.svg
+    :target: https://badge.fury.io/py/stac-nb
+    :alt: PyPI Status
 .. image:: https://github.com/darrenwiens/stac-nb/actions/workflows/python-package.yml/badge.svg
+    :alt: Build Status
 
 Install
 -------------------------
