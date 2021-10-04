@@ -3,6 +3,8 @@ stac-nb
 STAC in Jupyter Notebooks
 -------------------------
 
+.. image:: https://github.com/darrenwiens/stac-nb/actions/workflows/python-package.yml/badge.svg
+
 Install
 -------------------------
 ::
