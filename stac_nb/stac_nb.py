@@ -86,11 +86,7 @@ class STAC_Query_UI(widgets.VBox):
         tab.children = children
         titles = ["Common", "Spatial", "Temporal"]
         for i in range(len(titles)):
-            # test fails to set_title for some reason
-            try:
-                tab.set_title(i, str(titles[i]))
-            except:  # noqa: E722
-                pass
+            tab.set_title(i, str(titles[i]))
 
         self.children = [tab, self.show_query_w, self.query_btn_w, self.response_text]
 
