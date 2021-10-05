@@ -9,6 +9,8 @@ STAC in Jupyter Notebooks
 .. image:: https://badge.fury.io/py/stac-nb.svg
     :target: https://badge.fury.io/py/stac-nb
     :alt: PyPI Status
+.. image:: https://coveralls.io/repos/github/darrenwiens/stac-nb/badge.svg?branch=main
+    :target: https://coveralls.io/github/darrenwiens/stac-nb?branch=main
 .. image:: https://github.com/darrenwiens/stac-nb/actions/workflows/python-package.yml/badge.svg
     :alt: Build Status
 
