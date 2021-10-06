@@ -169,9 +169,9 @@ def search_response():
         "type": "FeatureCollection",
         "stac_version": "1.0.0-beta.2",
         "stac_extensions": [],
-        "context": {"page": 1, "limit": 10, "matched": 3337, "returned": 10},
+        "context": {"page": 1, "limit": 10, "matched": 3337, "returned": 1},
         "numberMatched": 3337,
-        "numberReturned": 10,
+        "numberReturned": 1,
         "features": [
             {
                 "stac_version": "1.0.0",
@@ -198,26 +198,7 @@ def search_response():
                 },
                 "properties": {"datetime": "2020-12-11T22:38:32.125000Z"},
                 "collection": "simple-collection",
-                "links": [
-                    {
-                        "rel": "collection",
-                        "href": f"{STAC_API}/collections/collection.json",
-                        "type": "application/json",
-                        "title": "Simple Example Collection",
-                    },
-                    {
-                        "rel": "root",
-                        "href": f"{STAC_API}/collections/collection.json",
-                        "type": "application/json",
-                        "title": "Simple Example Collection",
-                    },
-                    {
-                        "rel": "parent",
-                        "href": f"{STAC_API}/collections/collection.json",
-                        "type": "application/json",
-                        "title": "Simple Example Collection",
-                    },
-                ],
+                "links": [],
                 "assets": {
                     "visual": {
                         "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.tif",

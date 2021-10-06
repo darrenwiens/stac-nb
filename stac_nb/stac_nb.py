@@ -115,8 +115,9 @@ class STAC_Query_UI(widgets.VBox):
 
         query_response = self.client.search(**payload_dict)
 
-        self.query_results = query_response.get_items()
+        self.query_results = list(query_response.get_items())
 
         with self.response_text:
             if self.show_query_w.value:
                 print(f"QUERY: {vars(query_response)}")
+            print(f"MATCHES: {len(self.query_results)}")

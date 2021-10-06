@@ -2,23 +2,19 @@
 
 """Tests for `stac_nb` package."""
 
-from typing import Generator
 from stac_nb import STAC_Query_UI
+
+stac_api = "https://api/endpoint"
 
 
 def test_stac_query_ui(collections_response):
     """Test UI initialization."""
-
-    stac_api = "https://api/endpoint"
 
     ui = STAC_Query_UI(stac_api)
 
     assert len(ui.children) == 4
     assert ui.query_results is None
     assert ui.collections_w.options[0] == collections_response["collections"][0]["id"]
-
-
-stac_api = "https://api/endpoint"
 
 
 def test_display_ui(requests_mock, collection_response):
@@ -38,10 +34,10 @@ def test_button_click(search_response):
 
     ui.click_button(ui.query_btn_w)
 
-    assert isinstance(ui.query_results, Generator)
+    assert isinstance(ui.query_results, list)
 
 
-def test_bbox(requests_mock, collection_response, search_response):
+def test_bbox():
     """Test sending bbox in query."""
 
     ui = STAC_Query_UI(stac_api)
@@ -49,10 +45,10 @@ def test_bbox(requests_mock, collection_response, search_response):
     ui.bbox_w.value = "-123,45,-124,46"
 
     ui.click_button(ui.query_btn_w)
-    assert isinstance(ui.query_results, Generator)
+    assert isinstance(ui.query_results, list)
 
 
-def test_ids(requests_mock, collection_response, search_response):
+def test_ids():
     """Test sending ids in query."""
 
     ui = STAC_Query_UI(stac_api)
@@ -60,10 +56,10 @@ def test_ids(requests_mock, collection_response, search_response):
     ui.ids_w.value = "20201211_223832_CS2, another_id"
 
     ui.click_button(ui.query_btn_w)
-    assert isinstance(ui.query_results, Generator)
+    assert isinstance(ui.query_results, list)
 
 
-def test_print_query(requests_mock, capfd, collection_response, search_response):
+def test_print_query(capfd, search_response):
     """Test showing query."""
 
     ui = STAC_Query_UI(stac_api)
@@ -74,6 +70,7 @@ def test_print_query(requests_mock, capfd, collection_response, search_response)
 
     out, err = capfd.readouterr()
     assert "QUERY" in out
+    assert f"MATCHES: {len(search_response['features'])}" in out
     assert not err
 
-    assert isinstance(ui.query_results, Generator)
+    assert isinstance(ui.query_results, list)
