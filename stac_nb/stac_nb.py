@@ -1,19 +1,15 @@
 from IPython.display import display as iDisplay
 import ipywidgets as widgets
-import json
-import os
-import requests
+from pystac_client import Client
 
 
 class STAC_Query_UI(widgets.VBox):
     def __init__(self, stac_api: str, **kwargs):
         super().__init__(**kwargs)
-        self.stac_api = stac_api
+        self.client = Client.open(stac_api)
         self.query_results = None
 
-        collections_endpoint = os.path.join(stac_api, "collections")
-        collection_response = get_request(collections_endpoint, headers).json()
-        collection_ids = [i["id"] for i in collection_response["collections"]]
+        collection_ids = [c.id for c in self.client.get_all_collections()]
 
         self.collections_w = widgets.SelectMultiple(
             options=collection_ids,
@@ -100,7 +96,7 @@ class STAC_Query_UI(widgets.VBox):
         payload_dict = dict(
             collections=self.collections_w.value,
             datetime=f"{start_datetime}/{end_datetime}",
-            limit=self.limit_w.value,
+            max_items=self.limit_w.value,
         )
 
         try:
@@ -117,29 +113,10 @@ class STAC_Query_UI(widgets.VBox):
         if ids is not None and len(ids) > 0:
             payload_dict["ids"] = [x.strip(" ") for x in ids.split(",")]
 
-        payload = json.dumps(payload_dict)
+        query_response = self.client.search(**payload_dict)
 
-        search_endpoint = os.path.join(self.stac_api, "search")
-
-        query_response = post_request(search_endpoint, headers=headers, data=payload)
-
-        self.query_results = query_response.json()
+        self.query_results = query_response.get_items()
 
         with self.response_text:
             if self.show_query_w.value:
-                print(f"QUERY: {vars(query_response.request)}")
-            matches = query_response.json()
-            print(f"MATCHES: {len(matches['features'])}")
-
-
-headers = {"Content-Type": "application/json"}
-
-
-def get_request(url, headers={}):
-    response = requests.get(url, headers=headers)
-    return response
-
-
-def post_request(url, headers={}, data={}):
-    response = requests.post(url, headers=headers, data=data)
-    return response
+                print(f"QUERY: {vars(query_response)}")
