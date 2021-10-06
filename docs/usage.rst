@@ -11,6 +11,6 @@ Display the UI for a STAC API::
     ui = STAC_Query_UI("https://earth-search.aws.element84.com/v0")
     ui.display()
 
-After you have run the query, retrieve the results::
-    
+After you have run the query, retrieve the results from ``ui.query_results``::
+
     ui.query_results
