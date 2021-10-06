@@ -3,6 +3,7 @@
 """Tests for `stac_nb` package."""
 
 from stac_nb import STAC_Query_UI
+import pystac
 
 stac_api = "https://api/endpoint"
 
@@ -35,6 +36,8 @@ def test_button_click(search_response):
     ui.click_button(ui.query_btn_w)
 
     assert isinstance(ui.query_results, list)
+    assert len(ui.query_results) == len(search_response["features"])
+    assert isinstance(ui.query_results[0], pystac.item.Item)
 
 
 def test_bbox():
