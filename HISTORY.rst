@@ -12,3 +12,9 @@ History
 * Added: optional filter by ids
 * Added: optional print STAC query
 * Updated: docs
+
+0.3.0 (2021-10-06)
+------------------
+
+* Breaking Change: ``ui.query_results`` is now a list of ``pystac.item.Item``
+* Added: automate builds and tests
