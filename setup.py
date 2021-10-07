@@ -52,6 +52,6 @@ setup(
         "Source": "https://github.com/darrenwiens/stac-nb",
         "Tracker": "https://github.com/darrenwiens/stac-nb/issues",
     },
-    version="0.2.0",
+    version="0.3.0",
     zip_safe=False,
 )
