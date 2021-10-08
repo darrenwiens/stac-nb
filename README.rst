@@ -1,5 +1,6 @@
 stac-nb
 =================
+
 STAC in Jupyter Notebooks
 -------------------------
 
@@ -22,6 +23,8 @@ Install
 
 Usage
 -------------------------
+
+.. usage_label
 
 To use stac-nb in a project, start Jupyter Lab (``jupyter lab``), create a new notebook, then::
 
