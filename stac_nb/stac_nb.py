@@ -1,7 +1,31 @@
 from IPython.display import display as iDisplay
 import ipywidgets as widgets
 from pystac_client import Client
+import json
 
+# This class is a proxy to visualize STAC responses nicely in Jupyter
+# To show the actual list or dict in Jupyter, use repr() or print()
+class VisualList(list):
+
+    def __init__(self, data: list):
+        list.__init__(self, data)
+
+    def _repr_html_(self):
+        # Construct HTML, but load Vue Components source files only if the openEO HTML tag is not yet defined
+        return """
+        <script>
+        if (!window.customElements || !window.customElements.get('openeo-items')) {{
+            var el = document.createElement('script');
+            el.src = "https://cdn.jsdelivr.net/npm/@openeo/vue-components@2/assets/openeo.min.js";
+            document.head.appendChild(el);
+        }}
+        </script>
+        <openeo-items>
+            <script type="application/json">{props}</script>
+        </openeo-items>
+        """.format(
+            props = json.dumps({'items': [i.to_dict() for i in self], 'show-map': True})
+        )
 
 class STAC_Query_UI(widgets.VBox):
     def __init__(self, stac_api: str, **kwargs):
@@ -115,7 +139,7 @@ class STAC_Query_UI(widgets.VBox):
 
         query_response = self.client.search(**payload_dict)
 
-        self.query_results = list(query_response.get_items())
+        self.query_results = VisualList(query_response.get_items())
 
         with self.response_text:
             if self.show_query_w.value:
