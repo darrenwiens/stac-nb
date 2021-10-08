@@ -24,7 +24,7 @@ class VisualList(list):
             <script type="application/json">{props}</script>
         </openeo-items>
         """.format(
-            props = json.dumps({'items': self, 'show-map': True})
+            props = json.dumps({'items': [i.to_dict() for i in self], 'show-map': True})
         )
 
 class STAC_Query_UI(widgets.VBox):
