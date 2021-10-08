@@ -35,3 +35,10 @@ Display the UI for a STAC API::
 After you have run the query, retrieve the results from ``ui.query_results``::
 
     ui.query_results
+
+The statement above will render a visual list component, including an interactive map and a 
+multitude of other richly stylized elements.
+
+The list of pystac.Items returned from the query may be used further in Python, like::
+
+    list(ui.query_results)
