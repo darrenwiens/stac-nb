@@ -2,7 +2,7 @@
 
 """Tests for `stac_nb` package."""
 
-from stac_nb import STAC_Query_UI
+from stac_nb import STAC_Query_UI, VisualList
 import pystac
 
 stac_api = "https://api/endpoint"
@@ -77,3 +77,12 @@ def test_print_query(capfd, search_response):
     assert not err
 
     assert isinstance(ui.query_results, list)
+
+
+def test_visual_list(search_response):
+    item = pystac.Item.from_dict(search_response["features"][0])
+
+    visual_list = VisualList([item])
+
+    assert len(visual_list) == 1
+    assert isinstance(visual_list._repr_html_(), str)
