@@ -28,9 +28,9 @@ class VisualList(list):
         )
 
 class STAC_Query_UI(widgets.VBox):
-    def __init__(self, stac_api: str, **kwargs):
+    def __init__(self, stac_api: str, headers: dict=None, **kwargs):
         super().__init__(**kwargs)
-        self.client = Client.open(stac_api)
+        self.client = Client.open(stac_api, headers=headers)
         self.query_results = None
 
         collection_ids = [c.id for c in self.client.get_all_collections()]
