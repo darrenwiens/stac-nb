@@ -5,13 +5,16 @@ import json
 
 # This class is a proxy to visualize STAC responses nicely in Jupyter
 # To show the actual list or dict in Jupyter, use repr() or print()
+
+
 class VisualList(list):
 
     def __init__(self, data: list):
         list.__init__(self, data)
 
     def _repr_html_(self):
-        # Construct HTML, but load Vue Components source files only if the openEO HTML tag is not yet defined
+        # Construct HTML, but load Vue Components source files only if the
+        # openEO HTML tag is not yet defined
         return """
         <script>
         if (!window.customElements || !window.customElements.get('openeo-items')) {{
@@ -24,13 +27,14 @@ class VisualList(list):
             <script type="application/json">{props}</script>
         </openeo-items>
         """.format(
-            props = json.dumps({'items': [i.to_dict() for i in self], 'show-map': True})
+            props=json.dumps({'items': [i.to_dict() for i in self], 'show-map': True})
         )
 
+
 class STAC_Query_UI(widgets.VBox):
-    def __init__(self, stac_api: str, **kwargs):
+    def __init__(self, stac_api: str, headers: dict = None, **kwargs):
         super().__init__(**kwargs)
-        self.client = Client.open(stac_api)
+        self.client = Client.open(stac_api, headers=headers)
         self.query_results = None
 
         collection_ids = [c.id for c in self.client.get_all_collections()]
